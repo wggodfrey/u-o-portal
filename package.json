@@ -1,0 +1,45 @@
+{
+  "name": "u+o-portal",
+  "version": "1.0.0",
+  "description": "dashboard of utilization + occupancy analysis module",
+  "author": "Will Godfrey <w.gowman.godfrey@gmail.com>",
+  "private": true,
+  "scripts": {
+    "start:prd": "node server/index.js",
+    "start:dev": "nodemon server/index.js",
+    "build:prd": "webpack -p",
+    "build:dev": "webpack -d --watch",
+    "lint": "eslint --ignore-path .gitignore client/components/** --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wggodfrey/u-o-portal"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1",
+    "redux-debounced": "^0.5.0",
+    "redux-promise-middleware": "^5.1.1",
+    "redux-thunk": "^2.3.0",
+    "thunk": "0.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-react": "^1.0.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^1.0.1",
+    "nodemon": "^1.18.6",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  }
+}

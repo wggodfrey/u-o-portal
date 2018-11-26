@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  background: #fefefe;
+}
+
+#dashboard {
+  float: left;
+  display: inline-block;
+  margin: 2px 0px;
+  width: calc(100% - 20px);
+  padding: 10px;
+
+  background: #ffffff;
+}
