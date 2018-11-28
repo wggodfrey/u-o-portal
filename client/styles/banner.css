@@ -88,7 +88,7 @@
   padding: 0px 0px 0px 28px;
 }
 
-#banner .nav-opts .list .item .title {
+#banner .nav-opts .list .item .story {
   line-height: 17px;
   font-size: 14px;
   margin: 3px 0px;
@@ -96,13 +96,17 @@
   cursor: pointer;
 }
 
-#banner .nav-opts .list .item.active .title {
+#banner .nav-opts .list .item.active .story {
   color: #025468;
 }
 
-#banner .nav-opts .list .item.inactive .title {
+#banner .nav-opts .list .item.inactive .story {
   color: #ffffff;
 }
+/*
+#banner .nav-opts .list .item.active {
+  background: #BACED3;
+}*/
 
 #banner .nav-opts .list .item.inactive:hover {
   background: #025468;

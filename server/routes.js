@@ -1,13 +1,7 @@
-const controller = require('./controllers');
+const getBuildings = require('./queries/getBuildings');
+
 const router = require('express').Router();
-
-router.get('/bldgs', controller.bldgs.get);
-
-// router.post('/messages', controller.messages.post);
-
-// router.get('/users', controller.users.get);
-
-// router.post('/users', controller.users.post);
+router.route('/bldgs').get(getBuildings);
 
 
 module.exports = router;

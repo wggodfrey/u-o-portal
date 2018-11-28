@@ -19,8 +19,8 @@ const getSceneList = () => {
         'Room Occupancy',
       ],
       [
-        'Student-Hours vs Seat-Hours Diagram',
-        'Class-Size vs Room-Size Distribution',
+        'Student-Hours vs Seat-Hours',
+        'Class-Size vs Room-Size',
       ],
       [
         null,

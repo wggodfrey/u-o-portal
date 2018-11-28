@@ -23,6 +23,7 @@
   color: #ffffff;
   cursor: pointer;
   text-align: center;
+  transition: 0.5s background;
 }
 
 

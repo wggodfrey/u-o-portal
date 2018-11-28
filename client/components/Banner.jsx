@@ -42,7 +42,7 @@ class Banner extends React.Component {
                     key={ `option_${i}` }
                     onClick={() => { this.props.clickStory(i) }}
                     className={ this.props.activeStory === i? 'item active': 'item inactive' }>
-                    <div className='title'>{story}</div>
+                    <div className='story'>{story}</div>
                   </div>
                 )
               } 
