@@ -1,16 +1,15 @@
 import Redux from 'redux';
 
-const activeStoryReducer = (state = 0, action) => {
+const sceneReducer = (state = 0, action) => {
 
   switch (action.type) {
 
-    case 'SET_STORY':
+    case 'SET_SCENE':
       return action.payload;
     
     default:
       return state;
-  
   }
 }
 
-export default activeStoryReducer;
+export default sceneReducer;

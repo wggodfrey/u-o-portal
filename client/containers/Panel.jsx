@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import Banner from './../components/Banner';
+import Panel from './../components/Panel';
 
-import { setStory, setScene } from './../actions/activeSelections';
+import { setScene, setStory } from './../actions/activeSelections';
 import { toggleNavPanel } from './../actions/domDispositions';
 
 const mapStateToProps = state => ({
@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  clickMenu:  () => dispatch(toggleNavPanel()),
+  clickModal: () => dispatch(toggleNavPanel()),
   clickStory: story => {
     dispatch(setStory(story));
     dispatch(setScene(0));
@@ -19,4 +19,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Banner);
+export default connect(mapStateToProps, mapDispatchToProps)(Panel);

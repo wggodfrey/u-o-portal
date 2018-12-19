@@ -1,5 +1,8 @@
 node_modules/
 
 public/bundle.js
+public/media/
 
 aws-credentials.js
+
+package-lock.json

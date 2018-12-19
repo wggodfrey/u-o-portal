@@ -7,9 +7,5 @@ app.use(express.static(path.join(__dirname,'./node_modules')));
 
 const router = require('./server/routes');
 app.use('/', router);
-// app.get('/bldgs', (req, res) => {
-//   console.log(req);
-//   res.status(200).send('hiiiii')
-// });
 
 module.exports = app;

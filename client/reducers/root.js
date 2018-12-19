@@ -1,22 +1,24 @@
 import { combineReducers } from 'redux';
 
-//init reducers
-import storyListReducer from './storyList';
-import sceneListReducer from './sceneList';
-import buildingListReducer from './buildingList';
+import storiesReducer from './dataLists/stories';
+import scenesReducer from './dataLists/scenes';
+import buildingsReducer from './dataLists/buildings';
 
-//action reducers
-import activeStoryReducer from './activeStory';
-import activeSceneReducer from './activeScene';
-import navOptsReducer from './navOpts';
+import storyReducer from './activeSelections/story';
+import sceneReducer from './activeSelections/scene';
+import buildingReducer from './activeSelections/building';
+
+import navPanelReducer from './domDispositions/navPanel';
 
 const rootReducer = combineReducers({
-  sceneList: sceneListReducer,
-  storyList: storyListReducer,
-  activeStory: activeStoryReducer,
-  activeScene: activeSceneReducer,
-  buildingList: buildingListReducer,
-  navOpts: navOptsReducer,
+  scenes: scenesReducer,
+  stories: storiesReducer,
+  buildings: buildingsReducer,
+  
+  story: storyReducer,
+  scene: sceneReducer,
+  
+  navPanel: navPanelReducer,
 });
 
 export default rootReducer;

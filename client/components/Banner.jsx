@@ -6,49 +6,25 @@ class Banner extends React.Component {
 
   constructor(props) {
     super(props);
-    this.navpanel = null;
-    this.backgrnd = null;
+    this.navbutton = null;
   }
 
   componentDidUpdate() {
-    if (this.props.navOpts) {
-      this.navpanel.style.width = '180px';
-      this.navpanel.style.padding = null;
-      this.backgrnd.style.opacity = 0.75;
-      this.backgrnd.style.pointerEvents = 'all';
-    } else {
-      this.navpanel.style.width = '0px';
-      this.navpanel.style.padding = '5px 0px';
-      this.backgrnd.style.opacity = 0;
-      this.backgrnd.style.pointerEvents = 'none';
-    }
+    this.navbutton.blur();
   }
 
   render() {
     return (
-      this.props.storyList.length
+      this.props.stories.length
       ? <div id='banner'>
           <div className='logo'>
             <img src='images/uhm-logo.png'></img>
           </div>
           <div className='title'>University of Hawai‘i: Mānoa</div>
-          <div className='nav-opts'>
-            <i className='material-icons' onClick={ this.props.clickNavOpts }>list</i>
-            <div className='modal' ref={ ref => this.backgrnd = ref } onClick={ this.props.clickNavOpts }></div>
-            <div className='list' ref={ ref => this.navpanel = ref }>
-              {
-                this.props.storyList.map((story, i) => 
-                  <div 
-                    key={ `option_${i}` }
-                    onClick={() => { this.props.clickStory(i) }}
-                    className={ this.props.activeStory === i? 'item active': 'item inactive' }>
-                    <div className='story'>{story}</div>
-                  </div>
-                )
-              } 
-            </div>
-          </div>
-          <div className='nav-crumb'>{ this.props.storyList[this.props.activeStory] }</div>
+          <button className='button' ref={ ref => this.navbutton = ref } onClick={ this.props.clickMenu }>
+            <img src={"icons/baseline-list-36px.svg"}/>
+          </button>
+          <div className='crumb'>{ this.props.stories[this.props.story] }</div>
         </div>
       : <div></div> //...loading
     );

@@ -1,13 +1,13 @@
 import React from 'react';
 import store from './store/index.js';
 
+import Panel from './containers/Panel';
 import Banner from './containers/Banner';
-import Controller from './containers/Controller';
-import Dashboard from './containers/Dashboard';
+import Storyboard from './containers/Storyboard';
+import Filters from './containers/Filters';
+// import Dashboard from './containers/Dashboard';
 
-import { getSceneList } from './initializers/sceneList.js';
-import { getStoryList } from './initializers/storyList.js';
-import { getBuildingList } from './initializers/buildingList.js';
+import { getStories, getScenes, getBuildings } from './actions/dataLists.js';
 
 import './styles/app.css';
 
@@ -18,20 +18,23 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    store.dispatch(getSceneList());
-    store.dispatch(getStoryList());
-    store.dispatch(getBuildingList());
+    store.dispatch(getScenes());
+    store.dispatch(getStories());
+    store.dispatch(getBuildings());
   }
 
   render() {
     return (
       <div>
+        <Panel />
         <Banner />
-        <Controller />
-        <Dashboard />
+        <Storyboard />
+        <Filters />
       </div>
     );
   }
 }
 
 export default App;
+
+// <Dashboard />

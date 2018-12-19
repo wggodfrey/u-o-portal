@@ -1,10 +1,10 @@
 import Redux from 'redux';
 
-const navOptsReducer = (state = false, action) => {
+const navPanelReducer = (state = false, action) => {
 
   switch (action.type) {
 
-    case 'TOG_NAVOPTS':
+    case 'TOG_NAVPAN':
       return !state;
     
     default:
@@ -13,4 +13,4 @@ const navOptsReducer = (state = false, action) => {
   }
 }
 
-export default navOptsReducer;
+export default navPanelReducer;

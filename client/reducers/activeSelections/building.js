@@ -1,10 +1,10 @@
 import Redux from 'redux';
 
-const activeSceneReducer = (state = 0, action) => {
+const buildingReducer = (state = null, action) => {
 
   switch (action.type) {
 
-    case 'SET_SCENE':
+    case 'SET_BLDG':
       return action.payload;
     
     default:
@@ -13,4 +13,4 @@ const activeSceneReducer = (state = 0, action) => {
   }
 }
 
-export default activeSceneReducer;
+export default buildingReducer;
