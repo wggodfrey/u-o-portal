@@ -8,7 +8,7 @@ import Storyboard from 'containers/Storyboard'
 // import Filters from './Filters';
 // import Dashboard from './containers/Dashboard';
 
-import { getStories, getScenes, getBuildings } from 'actions/dataLists'
+import { getStories, getBuildings } from 'actions/dataLists'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -26,7 +26,6 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const store = configureStore()
-store.dispatch(getScenes())
 store.dispatch(getStories())
 store.dispatch(getBuildings())
 
@@ -36,6 +35,7 @@ const App = () => (
       <GlobalStyle/>
       <Banner/>
       <Storyboard />
+      
     </div>
   </Provider>
 )

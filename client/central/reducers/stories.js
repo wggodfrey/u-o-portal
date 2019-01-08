@@ -13,6 +13,17 @@ const storyListReducer = (state = [], action) => {
         ? {...story, active: true}
         : {...story, active: false}
       )
+
+    case 'SET_SCENE':
+      return state.map((story, i) =>
+        story.active
+        ? {...story, scenes: story.scenes.map((scene, j) => 
+            action.payload === j
+            ? {...scene, active: true}
+            : {...scene, active: false}
+          )}
+        : story
+      )
     
     default:
       return state;

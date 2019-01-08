@@ -20,7 +20,7 @@ const List = styled.div`
   position: fixed;
   top: 44px;
   right: 0px;
-  height: calc(100vh - 51px);
+  height: calc(100vh - 44px);
   font-family: 'Roboto Condensed';
   background: #759ea9;
   transition: 1s width, 1s padding;
@@ -58,8 +58,22 @@ const List = styled.div`
   }
 `
 
-const Option = styled.div`
-  
+const Modal = styled.div`
+  position: fixed;
+  top: 44px;
+  left: 0px;
+  height: calc(100vh - 44px);
+  width: 100%;
+  background: #525252;
+  transition: 0.5s opacity;
+  &.open {
+    opacity: 0.25;
+    pointer-events: all;
+  }
+  &.closed {
+    opacity: 0;
+    pointer-events: none;
+  }
 `
 
 class Panel extends React.Component {
@@ -85,6 +99,9 @@ class Panel extends React.Component {
         <Button onClick={ this.togglePanel.bind(this) }>
           <img src={'icons/baseline-list-36px.svg'}/>
         </Button>
+        <Modal 
+          className={ this.state.open? 'open': 'closed' }
+          onClick={ this.togglePanel.bind(this) }/>
         <List 
           className={ this.state.open? 'open': 'closed' }>
           {
@@ -108,4 +125,3 @@ class Panel extends React.Component {
 
 export default Panel;
 
-// <div className='modal' ref={ ref => this.background = ref } onClick={ () => {} }></div>

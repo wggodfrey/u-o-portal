@@ -5,11 +5,6 @@ const initStories = stories => ({
   payload: stories
 })
 
-const initScenes = scenes => ({
-  type: 'INIT_SCENES',
-  payload: scenes
-})
-
 const initBuildings = payload => ({ 
   type: 'INIT_BLDGS',
   payload: payload,
@@ -31,76 +26,82 @@ const getStories = () => {
       {
         title: 'Facilities',
         active: true,
+        scenes: [
+          {
+            title: 'Campus Overview',
+            active: false,
+            filters: {
+              multiBuildings:  true,
+              singleBuildings: false,
+            },
+          },
+          {
+            active: false,
+            title: 'Building Inventory',
+            filters: {
+              multiBuildings:  true,
+              singleBuildings: false,
+            },
+          },
+          {
+            active: false,
+            title: 'Room Inventory',
+            filters: {
+              multiBuildings:  false,
+              singleBuildings: true,
+            },
+          }
+        ],
       },
       {
         title: 'Instruction',
         active: false,
+        scenes: [
+          {
+            active: false,
+            title: 'Campus Overview',
+          },
+          {
+            active: false,
+            title: 'Building Utilization',
+          },
+          {
+            active: false,
+            title: 'Room Utilization',
+          },
+          {
+            active: false,
+            title: 'Building Occupancy',
+          },
+          {
+            active: false,
+            title: 'Room Occupancy',
+          },
+        ],
       },
       {
         title: 'Capacity',
         active: false,
+        scenes: [
+          {
+            active: false,
+            title: 'Student-Hours vs Seat-Hours',
+          },
+          {
+            active: false,
+            title: 'Class-Size vs Room-Size',
+          },
+        ],
       },
       {
         title: 'Photos',
         active: false,
+        scenes: [
+          null,
+        ],
       },
     ]
     dispatch(initStories(stories))
-  }
-}
-
-const getScenes = () => {
-  return dispatch => {
-    const scenes = [
-      [
-        {
-          title: 'Campus Overview',
-          filters: {
-            multiBuildings:  true,
-            singleBuildings: false,
-          },
-        },
-        {
-          title: 'Building Inventory',
-          filters: {
-            multiBuildings:  true,
-            singleBuildings: false,
-          },
-        },
-        {
-          title: 'Room Inventory',
-          filters: {
-            multiBuildings:  false,
-            singleBuildings: true,
-          },
-        }
-      ],
-      [
-        {
-          title: 'Campus Overview',
-        },
-        {
-          title: 'Building Utilization',
-        },
-        {
-          title: 'Room Utilization',
-        },
-        {
-          title: 'Building Occupancy',
-        },
-        {
-          title: 'Room Occupancy',
-        },
-      ],
-      [
-        'Student-Hours vs Seat-Hours',
-        'Class-Size vs Room-Size',
-      ],
-      [
-        null,
-      ],
-    ]
-    dispatch(initScenes(scenes))
   }
 }
 
@@ -125,4 +126,4 @@ const getPhotos = (building_id, room_id) => {
   }
 }
 
-export { getStories, getScenes, getBuildings, getRooms, getPhotos }
+export { getStories, getBuildings, getRooms, getPhotos }
