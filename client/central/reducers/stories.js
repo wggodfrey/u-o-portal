@@ -6,6 +6,13 @@ const storyListReducer = (state = [], action) => {
 
     case 'INIT_STORIES':
       return action.payload;
+
+    case 'SET_STORY':
+      return state.map((story, i) => 
+        action.payload === i
+        ? {...story, active: true}
+        : {...story, active: false}
+      )
     
     default:
       return state;

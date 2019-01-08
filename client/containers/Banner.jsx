@@ -1,22 +1,12 @@
-import { connect } from 'react-redux';
-import Banner from './../components/Banner';
+import { connect } from 'react-redux'
+import Banner from 'components/Banner'
 
-import { setStory, setScene } from './../actions/activeSelections';
-import { toggleNavPanel } from './../actions/domDispositions';
+import { setStory, setScene } from 'actions/activeSelections'
 
 const mapStateToProps = state => ({
-  stories: state.stories,
-  story: state.story,
-  navPanel: state.navPanel,
-});
+  stories: state.get('stories'),
+})
 
-const mapDispatchToProps = dispatch => ({
-  clickMenu:  () => dispatch(toggleNavPanel()),
-  clickStory: story => {
-    dispatch(setStory(story));
-    dispatch(setScene(0));
-    dispatch(toggleNavPanel());
-  },
-});
+const mapDispatchToProps = null
 
-export default connect(mapStateToProps, mapDispatchToProps)(Banner);
+export default connect(mapStateToProps, mapDispatchToProps)(Banner)

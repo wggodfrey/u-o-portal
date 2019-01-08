@@ -1,39 +1,51 @@
-import axios from 'axios';
+import axios from 'axios'
 
 const initStories = stories => ({
   type: 'INIT_STORIES',
   payload: stories
-});
+})
 
 const initScenes = scenes => ({
   type: 'INIT_SCENES',
   payload: scenes
-});
+})
 
 const initBuildings = payload => ({ 
   type: 'INIT_BLDGS',
   payload: payload,
-});
+})
 
 const initRooms = payload => ({ 
   type: 'INIT_ROOMS',
   payload: payload,
-});
+})
 
 const initPhotos = payload => ({ 
   type: 'INIT_PHOTOS',
   payload: payload,
-});
+})
 
 const getStories = () => {
   return dispatch => {
     const stories = [
-      'Facilities',
-      'Instruction',
-      'Capacity',
-      'Photos'
-    ];
-    dispatch(initStories(stories));
+      {
+        title: 'Facilities',
+        active: true,
+      },
+      {
+        title: 'Instruction',
+        active: false,
+      },
+      {
+        title: 'Capacity',
+        active: false,
+      },
+      {
+        title: 'Photos',
+        active: false,
+      },
+    ]
+    dispatch(initStories(stories))
   }
 }
 
@@ -87,30 +99,30 @@ const getScenes = () => {
       [
         null,
       ],
-    ];
-    dispatch(initScenes(scenes));
+    ]
+    dispatch(initScenes(scenes))
   }
 }
 
 const getBuildings = () => {
   return dispatch => {
     axios.get('/buildings')
-      .then(bldgs => dispatch(initBuildings(bldgs.data)));
-  };
-};
+      .then(bldgs => dispatch(initBuildings(bldgs.data)))
+  }
+}
 
 const getRooms = (building_id) => {
   return dispatch => {
     axios.get(`/rooms/${building_id}`)
-      .then(rooms => dispatch(initRooms(rooms.data)));
-  };
-};
+      .then(rooms => dispatch(initRooms(rooms.data)))
+  }
+}
 
 const getPhotos = (building_id, room_id) => {
   return dispatch => {
     axios.get(`/photos/${building_id}/${room_id || 'ALL'}`)
-      .then(photos => dispatch(initPhotos(photos.data)));
-  };
-};
+      .then(photos => dispatch(initPhotos(photos.data)))
+  }
+}
 
-export { getStories, getScenes, getBuildings, getRooms, getPhotos };
+export { getStories, getScenes, getBuildings, getRooms, getPhotos }

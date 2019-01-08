@@ -1,6 +1,6 @@
 import Redux from 'redux';
 
-const buildingsReducer = (state = [], action) => {
+const buildingListReducer = (state = [], action) => {
 
   switch(action.type) {
     
@@ -13,4 +13,4 @@ const buildingsReducer = (state = [], action) => {
   }
 }
 
-export default buildingsReducer;
+export default buildingListReducer;

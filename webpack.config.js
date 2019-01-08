@@ -8,6 +8,14 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+      components: path.resolve(__dirname, 'client/components/'),
+      containers: path.resolve(__dirname, 'client/containers/'),
+      central: path.resolve(__dirname, 'client/central/'),
+      actions: path.resolve(__dirname, 'client/central/actions/'),
+      reducers: path.resolve(__dirname, 'client/central/reducers/'),
+      selectors: path.resolve(__dirname, 'client/central/selectors/'),
+    },
   },
   module: {
     rules: [

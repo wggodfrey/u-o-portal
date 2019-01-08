@@ -1,36 +1,79 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import './../styles/banner.css';
+import Panel from 'containers/panel';
 
-class Banner extends React.Component {
+const Wrapper = styled.div`
+  width: calc(100% - 20px);
+  height: 40px;
+  padding: 2px 10px 1px;
+  font-family: 'Roboto Condensed';
+  color: #ffffff;
+  background: #025468;
+  filter: drop-shadow(0px 1.5px 1.5px rgb(63, 66, 71));
+`
 
-  constructor(props) {
-    super(props);
-    this.navbutton = null;
+const Logo = styled.div`
+  display: inline-block;
+  vertical-align: top;
+  width: 72px;
+  height: 39px;
+  overflow: hidden;
+  & img {
+    position: relative;
+    top: -13px;
+    padding: 2px;
+    max-height: 61px;
   }
+`
 
-  componentDidUpdate() {
-    this.navbutton.blur();
-  }
+const Title = styled.div`
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 275px);
+  padding: 2px 0 0 0;
 
-  render() {
-    return (
-      this.props.stories.length
-      ? <div id='banner'>
-          <div className='logo'>
-            <img src='images/uhm-logo.png'></img>
-          </div>
-          <div className='title'>University of Hawai‘i: Mānoa</div>
-          <button className='button' ref={ ref => this.navbutton = ref } onClick={ this.props.clickMenu }>
-            <img src={"icons/baseline-list-36px.svg"}/>
-          </button>
-          <div className='crumb'>{ this.props.stories[this.props.story] }</div>
-        </div>
-      : <div></div> //...loading
-    );
-  }
+  font-family: Roboto;
+  font-weight: 400;
+  line-height: 39px;
+  font-size: 16px;
+`
+
+const Crumb = styled.div`
+  display: inline-block;
+  vertical-align: top;
+  width: 150px;
+  padding: 2px 0 0 0;
+
+  font-family: 'Roboto Condensed';
+  line-height: 39px;
+  font-size: 16px;
+`
+
+const Banner = ({stories}) => {
+
+if (!stories.length) {
+  return <Wrapper/>
 }
 
-export default Banner;
+let story = stories.filter(s => s.active)[0];
+return (
+  <Wrapper>
+    <Logo>
+      <img src='images/uhm-logo.png'></img>
+    </Logo>
+    <Title>University of Hawai‘i: Mānoa</Title>
+    <Panel stories={stories}></Panel>
+    <Crumb>{ story.title }</Crumb>
+  </Wrapper>
+)}
+
+
+export default Banner
 
 // TODO: put logout, account details, modules in nav opts
+
+
+// <button className='button'>
+//       
+//     </button>
