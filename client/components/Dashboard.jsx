@@ -5,11 +5,9 @@ import Filters from 'containers/Filters'
 import PieMap from 'containers/scenes/PieMap'
 
 const Wrapper = styled.div`
-  display: inline-block;
   width: calc(100% - 20px);
   height: calc(100vh - 120px);
   margin: 0px 10px;
-  background: #fff;
 `
 
 const Dashboard = ({stories}) => {

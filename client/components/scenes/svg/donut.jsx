@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactFauxDom, { createElement } from 'react-faux-dom'
 import withD3Renderer from 'utils/withD3Renderer'
 import { select as d3Select } from 'd3-selection'
 import { pie as d3Pie, arc as d3Arc } from 'd3-shape'
@@ -40,32 +41,37 @@ const Donut = ({
     mechanical_nsf,
     unclassified_nsf,
   }) => { 
+
   const data = [+classroom_nsf, +classlab_nsf, +openlab_nsf, +researchlab_nsf, +officefac_nsf, +specialuse_nsf, +generaluse_nsf, +support_nsf, +healthcare_nsf, +residential_nsf, +circulation_nsf, +bldgsvc_nsf, +mechanical_nsf, +unclassified_nsf]
-  const outerRadius = Math.sqrt(data.reduce((accum, elem) => accum + elem)*30/mapScales[zoom])
-  const innerRadius = 0
-  const arc = d3Arc()
+  const outerRadius = Math.cbrt(data.reduce((accum, elem) => accum + elem)*500/mapScales[zoom])
+  const innerRadius = (outerRadius < 5? 0: outerRadius/2.5)
+  const arcFunc = d3Arc()
     .startAngle(function(d) { return d.startAngle })
     .endAngle(function(d) { return d.endAngle })
     .innerRadius(innerRadius)
     .outerRadius(outerRadius)
-  const pie = d3Pie()
+  const pieFunc = d3Pie()
     .value(d => d)
     .sort(null)
-    
 
-  const svgProps = {
-    width: outerRadius * 2,
-    height: outerRadius * 2,
-    translate: `translate(${-outerRadius}, ${-outerRadius})`,
-  }
+  let chart = d3Select(createElement('svg'))
+    .attr('width', outerRadius * 2)
+    .attr('height', outerRadius * 2)
+    .attr('transform', `translate(${-outerRadius}, ${-outerRadius})`)
+
+  chart.append('g')
+    .selectAll('path')
+    .data(pieFunc(data))
+    .enter().append('path')
+      .style('shape-rendering','geometricPrecision')
+      .attr('stroke-width','0.1px')
+      .attr('stroke','#a9a9a9')
+      .attr('transform','translate(' + outerRadius + ',' + outerRadius + ')')
+      .attr('fill',((d, i) => ncesColors[i].hexfill))
+      .attr('d',(d => arcFunc(d)))
+
   return (
-    <svg {...svgProps}>
-      <rect 
-        width={outerRadius * 2}
-        height={outerRadius * 2}
-        fill={'red'}
-      />
-    </svg>
+    chart.node().toReact()
   )
 }
 

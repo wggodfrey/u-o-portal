@@ -12,10 +12,6 @@ const Wrapper = styled.div`
   overflow: hidden;
 `
 
-const EmptyMarker = styled.div`
-  display: none;
-`
-
 const mapOptions = {
   streetViewControl: false,
   mapTypeControl: false,
@@ -60,15 +56,15 @@ class PieMap extends React.Component {
           onCenterChanged={this.handleCenterChange.bind(this)}
           onZoomChanged={this.handleZoomChange.bind(this)}>
           {
-            this.props.buildings.map((b, i) => 
-              b.activeMulti
-              ? <Donut
+            this.props.buildings
+              .filter(b => b.activeMulti)
+              .map((b, i) => 
+                <Donut
                   key={`donut_${i}`}
                   zoom={this.state.zoom}
                   {...b}
                 />
-              : <EmptyMarker />
-            )
+              )
           }
         </GoogleMapReact>
       </Wrapper>

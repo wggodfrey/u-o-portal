@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Panel from 'containers/panel';
 
 const Wrapper = styled.div`
+  position: relative;
   width: calc(100% - 20px);
   height: 40px;
   padding: 2px 10px 1px;
