@@ -29,26 +29,132 @@ const getStories = () => {
         scenes: [
           {
             title: 'Campus Overview',
-            active: false,
+            active: true,
             filters: {
-              multiBuildings:  true,
-              singleBuildings: false,
+              style: {
+                position: 'absolute',
+                top: '135px',
+                left: '25px',
+                width: '400px',
+              },
+              components: [
+                {
+                  parameter: 'buildings',
+                  pickmode: 'dropdownmulti',
+                },
+              ],
             },
           },
           {
-            active: false,
             title: 'Building Inventory',
+            active: false,
             filters: {
-              multiBuildings:  true,
-              singleBuildings: false,
+              style: {
+                position: 'absolute',
+                top: '135px',
+                right: '25px',
+                width: '400px',
+              },
+              components: [
+                {
+                  parameter: 'buildings',
+                  pickmode: 'dropdownmulti',
+                },
+              ],
+            },
+            legend: {
+              style: {
+                position: 'absolute',
+                top: '180px',
+                right: '25px',
+                width: '400px',
+              },
+              components: [
+                {
+                  title: 'NCES Categories',
+                  columns: [4,7,4],
+                  items: [
+                    {
+                      label: 'Classroom',
+                      hexfill: '#2C5985'
+                    },
+                    {
+                      label: 'Class Laboratory',
+                      hexfill: '#347EA1'
+                    },
+                    {
+                      label:'Open Laboratory',
+                      hexfill: '#4BA5BA'
+                    },
+                    {
+                      label: 'Research Laboratory',
+                      hexfill: '#89C8CC'
+                    },
+                    {
+                      label: 'Office Facilities',
+                      hexfill: '#EEDBBD'
+                    },
+                    {
+                      label: 'Study Facilities',
+                      hexfill: '#E8B777'
+                    },
+                    {
+                      label: 'Special Use Facilities',
+                      hexfill: '#D38C54'
+                    },
+                    {
+                      label: 'General Use Facilities',
+                      hexfill: '#BD603B'
+                    },
+                    {
+                      label: 'Support Facilities',
+                      hexfill: '#9F3632'
+                    },
+                    {
+                      label: 'Health Care Facilities',
+                      hexfill: '#BE89AC'
+                    },
+                    {
+                      label: 'Residential Facilities',
+                      hexfill: '#9A6A96'
+                    },
+                    {
+                      label: 'Circulation',
+                      hexfill: '#DCD4D0'
+                    },
+                    {
+                      label: 'Building Service',
+                      hexfill: '#B7AFAB'
+                    },
+                    {
+                      label: 'Mechanical',
+                      hexfill: '#948C88'
+                    },
+                    {
+                      label: 'Unclassified Space',
+                      hexfill: '#736967'
+                    },
+                  ],
+                },
+              ],
             },
           },
           {
-            active: false,
             title: 'Room Inventory',
+            active: false,
             filters: {
-              multiBuildings:  false,
-              singleBuildings: true,
+              style: {
+                position: 'absolute',
+                top: '135px',
+                left: '10px',
+                width: '400px',
+              },
+              components: [
+                {
+                  parameter: 'buildings',
+                  pickmode: 'dropdownmulti',
+                },
+              ],
             },
           }
         ],
@@ -58,24 +164,24 @@ const getStories = () => {
         active: false,
         scenes: [
           {
-            active: false,
             title: 'Campus Overview',
+            active: false,
           },
           {
-            active: false,
             title: 'Building Utilization',
+            active: false,
           },
           {
-            active: false,
             title: 'Room Utilization',
+            active: false,
           },
           {
-            active: false,
             title: 'Building Occupancy',
+            active: false,
           },
           {
-            active: false,
             title: 'Room Occupancy',
+            active: false,
           },
         ],
       },
@@ -84,12 +190,12 @@ const getStories = () => {
         active: false,
         scenes: [
           {
-            active: false,
             title: 'Student-Hours vs Seat-Hours',
+            active: false,
           },
           {
-            active: false,
             title: 'Class-Size vs Room-Size',
+            active: false,
           },
         ],
       },
@@ -108,7 +214,13 @@ const getStories = () => {
 const getBuildings = () => {
   return dispatch => {
     axios.get('/buildings')
-      .then(bldgs => dispatch(initBuildings(bldgs.data)))
+      .then(bldgs => 
+        bldgs.data.map(bldg => ({...bldg, 
+          activeMulti: true,
+          activeSingle: bldg.nm === 'BILGER HALL',
+        }))
+      )
+      .then(bldgs => dispatch(initBuildings(bldgs)))
   }
 }
 

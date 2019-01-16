@@ -1,5 +1,4 @@
 const controller = require('./controllers');
-const multer = require('multer');
 
 const router = require('express').Router();
 router.route('/buildings').get(controller.buildings.get);

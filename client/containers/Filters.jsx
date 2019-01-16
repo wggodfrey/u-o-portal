@@ -1,18 +1,14 @@
-import { connect } from 'react-redux';
-import Filters from './../components/Filters';
+import { connect } from 'react-redux'
+import Filters from 'components/Filters'
 
 const mapStateToProps = state => ({
-  story: state.story,
-  scene: state.scene,
-  scenes: state.scenes,
-  buildings: state.buildings,
-});
+  buildings: state.get('buildings'),
+})
 
 const mapDispatchToProps = dispatch => ({
   selectBuilding: building => {
-    dispatch(setBuilding(building));
-    dispatch(getRooms)
+    dispatch(setBuilding(building))
   }
-});
+})
 
-export default connect(mapStateToProps, null)(Filters);
+export default connect(mapStateToProps, null)(Filters)

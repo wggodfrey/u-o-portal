@@ -3,6 +3,6 @@ node_modules/
 public/bundle.js
 public/media/
 
-aws-credentials.js
+credentials.js
 
 package-lock.json

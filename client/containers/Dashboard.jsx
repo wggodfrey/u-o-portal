@@ -1,9 +1,8 @@
-import { connect } from 'react-redux';
-import Dashboard from './../components/Dashboard';
+import { connect } from 'react-redux'
+import Dashboard from 'components/Dashboard'
 
-const mapStateToProps = (state) => ({
-  activeStory: state.activeStory,
-  activeScene: state.activeScene,
-});
+const mapStateToProps = state => ({
+  stories: state.get('stories'),
+})
 
-export default connect(mapStateToProps, null)(Dashboard);
+export default connect(mapStateToProps, null)(Dashboard)

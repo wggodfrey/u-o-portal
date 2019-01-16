@@ -52,28 +52,24 @@ const Crumb = styled.div`
 
 const Banner = ({stories}) => {
 
-if (!stories.length) {
-  return <Wrapper/>
-}
+  if (!stories.length) {
+    return (<Wrapper/>)
+  }
 
-let story = stories.filter(s => s.active)[0];
-return (
-  <Wrapper>
-    <Logo>
-      <img src='images/uhm-logo.png'></img>
-    </Logo>
-    <Title>University of Hawai‘i: Mānoa</Title>
-    <Panel stories={stories}></Panel>
-    <Crumb>{ story.title }</Crumb>
-  </Wrapper>
-)}
+  let story = stories.filter(s => s.active)[0];
+  return (
+    <Wrapper>
+      <Logo>
+        <img src='images/uhm-logo.png'></img>
+      </Logo>
+      <Title>University of Hawai‘i: Mānoa</Title>
+      <Panel stories={stories}></Panel>
+      <Crumb>{ story.title }</Crumb>
+    </Wrapper>
+  )
+}
 
 
 export default Banner
 
 // TODO: put logout, account details, modules in nav opts
-
-
-// <button className='button'>
-//       
-//     </button>

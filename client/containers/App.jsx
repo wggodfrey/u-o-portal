@@ -5,23 +5,27 @@ import { configureStore } from 'central/configureStore'
 import styled, {ThemeProvider, createGlobalStyle} from 'styled-components'
 import Banner from 'containers/Banner'
 import Storyboard from 'containers/Storyboard'
-// import Filters from './Filters';
-// import Dashboard from './containers/Dashboard';
+import Dashboard from 'containers/Dashboard'
 
 import { getStories, getBuildings } from 'actions/dataLists'
 
 
 const GlobalStyle = createGlobalStyle`
   body {
-    min-width: 600px;
+    min-width: 920px;
     margin: 0;
     overflow: hidden;
-    background: #efefef;
+    background: #ffffff;
   }
   button {
     outline: none !important;
     outline-offset: none !important;
     border: none !important;
+  }
+  input {
+    border: solid 1px #f2f2f2;
+    outline: none !important;
+    outline-offset: none !important;
   }
 `
 
@@ -35,16 +39,9 @@ const App = () => (
       <GlobalStyle/>
       <Banner/>
       <Storyboard />
-      
+      <Dashboard />
     </div>
   </Provider>
 )
 
 export default App
-
-
-// <div>
-//   <Banner />
-//   
-//   <Filters />
-// </div>

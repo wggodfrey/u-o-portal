@@ -34,7 +34,6 @@ const Scene = styled.div`
   }
 `
 
-
 const Storyboard = ({stories, clickScene}) => {
 
   if (!stories.length) {

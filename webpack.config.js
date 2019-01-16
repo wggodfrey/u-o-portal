@@ -11,6 +11,7 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, 'client/components/'),
       containers: path.resolve(__dirname, 'client/containers/'),
+      utils: path.resolve(__dirname, 'client/utils/'),
       central: path.resolve(__dirname, 'client/central/'),
       actions: path.resolve(__dirname, 'client/central/actions/'),
       reducers: path.resolve(__dirname, 'client/central/reducers/'),
@@ -24,6 +25,7 @@ module.exports = {
         include: path.join(__dirname, '/client'),
         loader: 'babel-loader',
         options: {
+          plugins: ['@babel/plugin-proposal-class-properties'],
           presets: ['@babel/preset-env', '@babel/preset-react'],
         },
       },
