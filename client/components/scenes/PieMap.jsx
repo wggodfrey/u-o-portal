@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import credentials from './../../../credentials'
+
 import GoogleMapReact from 'google-map-react'
 import Donut from 'components/scenes/svg/donut'
 
@@ -51,7 +53,7 @@ class PieMap extends React.Component {
       <Wrapper>
         <GoogleMapReact
           ref='map'
-          bootstrapURLKeys={{key:`AIzaSyAfn2rNjZB0e3XXZwr5_qg_WFo8BJeK0T0`}}
+          bootstrapURLKeys={{key:`${credentials.google.key}`}}
           options={mapOptions}
           zoom={this.state.zoom}
           center={this.state.center}
