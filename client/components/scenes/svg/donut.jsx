@@ -43,7 +43,8 @@ const Donut = ({
   }) => { 
 
   const data = [+classroom_nsf, +classlab_nsf, +openlab_nsf, +researchlab_nsf, +officefac_nsf, +specialuse_nsf, +generaluse_nsf, +support_nsf, +healthcare_nsf, +residential_nsf, +circulation_nsf, +bldgsvc_nsf, +mechanical_nsf, +unclassified_nsf]
-  const outerRadius = Math.cbrt(data.reduce((accum, elem) => accum + elem)*500/mapScales[zoom])
+  const totalValue = data.reduce((accum, elem) => accum + elem)
+  const outerRadius = Math.sqrt(totalValue / 10) / Math.pow(mapScales[zoom], 1/(zoom - 10))
   const innerRadius = (outerRadius < 5? 0: outerRadius/2.5)
   const arcFunc = d3Arc()
     .startAngle(function(d) { return d.startAngle })

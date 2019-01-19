@@ -1,14 +1,15 @@
 import { connect } from 'react-redux'
 import Filters from 'components/Filters'
 
+import { toggleBuildingMulti, toggleBuildingsAll } from 'actions/activeSelections'
+
 const mapStateToProps = state => ({
   buildings: state.get('buildings'),
 })
 
 const mapDispatchToProps = dispatch => ({
-  selectBuilding: building => {
-    dispatch(setBuilding(building))
-  }
+  toggleBuildingMulti: building => dispatch(toggleBuildingMulti(building)),
+  toggleBuildingsAll: disposition => dispatch(toggleBuildingsAll(disposition)),
 })
 
-export default connect(mapStateToProps, null)(Filters)
+export default connect(mapStateToProps, mapDispatchToProps)(Filters)

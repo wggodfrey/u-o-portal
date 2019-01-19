@@ -26,9 +26,9 @@ const storyListReducer = (state = [], action) => {
       )
     
     default:
-      return state;
+      return state
   
   }
 }
 
-export default storyListReducer;
+export default storyListReducer

@@ -1,13 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import DropDownMulti from 'components/selects/DropDownMulti'
+import DropDownMulti from 'components/forms/DropDownMulti'
 
 const Wrapper = styled.div`
   padding: 5px;
 `
 
-const Filters = ({ scene, buildings }) => (
+const Filters = ({ 
+  scene, 
+  buildings, 
+  toggleBuildingMulti,
+  toggleBuildingsAll,
+}) => (
   <Wrapper style={scene.filters.style}>
   {
     scene.filters.components.map((component, i) => {
@@ -21,10 +26,30 @@ const Filters = ({ scene, buildings }) => (
         }
       })()
 
+      let handleSingle = (() => {
+        switch (component.parameter) {
+          case 'buildings':
+            return toggleBuildingMulti
+          default:
+            return () => { console.log('hi') }
+        }
+      })() 
+
+      let handleAll = (() => {
+        switch (component.parameter) {
+          case 'buildings':
+            return toggleBuildingsAll
+          default:
+            return () => { console.log('hi') }
+        }
+      })()
+
       let fProps = {
         key: `filt_${i}`,
-        data,
         label: component.parameter,
+        data,
+        handleSingle,
+        handleAll,
       }
 
       return (

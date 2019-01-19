@@ -33,7 +33,7 @@ const getStories = () => {
             filters: {
               style: {
                 position: 'absolute',
-                top: '135px',
+                top: '125px',
                 left: '25px',
                 width: '400px',
               },
@@ -51,7 +51,7 @@ const getStories = () => {
             filters: {
               style: {
                 position: 'absolute',
-                top: '135px',
+                top: '125px',
                 right: '25px',
                 width: '400px',
               },
@@ -145,7 +145,7 @@ const getStories = () => {
             filters: {
               style: {
                 position: 'absolute',
-                top: '135px',
+                top: '125px',
                 left: '10px',
                 width: '400px',
               },

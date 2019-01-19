@@ -8,19 +8,14 @@ const setScene = payload => ({
   payload: payload,
 });
 
-const setBuilding = payload => ({ 
-  type: 'SET_BLDG',
+const toggleBuildingMulti = payload => ({ 
+  type: 'TOGG_BLDG_MULTI',
   payload: payload,
 });
 
-const setRoom = payload => ({ 
-  type: 'SET_ROOM',
+const toggleBuildingsAll = payload => ({ 
+  type: 'TOGG_BLDGS_ALL',
   payload: payload,
 });
 
-const setPhoto = payload => ({ 
-  type: 'SET_PHOTO',
-  payload: payload,
-});
-
-export { setStory, setScene, setBuilding, setRoom, setPhoto };
+export { setStory, setScene, toggleBuildingMulti, toggleBuildingsAll };

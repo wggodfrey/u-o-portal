@@ -27,6 +27,11 @@ const GlobalStyle = createGlobalStyle`
     outline: none !important;
     outline-offset: none !important;
   }
+  ul {
+    list-style: none outside none;
+    padding: 0;
+    margin: 0;
+  }
 `
 
 const store = configureStore()
