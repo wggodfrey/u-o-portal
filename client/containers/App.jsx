@@ -7,8 +7,7 @@ import Banner from 'containers/Banner'
 import Storyboard from 'containers/Storyboard'
 import Dashboard from 'containers/Dashboard'
 
-import { getStories, getBuildings } from 'actions/dataLists'
-
+import { getStories, getBuildings } from 'central/actions/dataLists'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -41,8 +40,8 @@ store.dispatch(getBuildings())
 const App = () => (
   <Provider store={store}>
     <div>
-      <GlobalStyle/>
-      <Banner/>
+      <GlobalStyle />
+      <Banner />
       <Storyboard />
       <Dashboard />
     </div>

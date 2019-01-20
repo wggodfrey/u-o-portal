@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux-immutable'
 import { fromJS } from 'immutable'
-import stories from 'reducers/stories'
-import buildings from 'reducers/buildings'
+import stories from 'central/reducers/stories'
+import buildings from 'central/reducers/buildings'
 
 export const initialState = fromJS({
   stories: [],

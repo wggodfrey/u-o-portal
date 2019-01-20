@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Panel from 'components/Panel'
 
-import { setScene, setStory } from 'actions/activeSelections'
+import { setScene, setStory } from 'central/actions/activeSelections'
 
 const mapStateToProps = null
 

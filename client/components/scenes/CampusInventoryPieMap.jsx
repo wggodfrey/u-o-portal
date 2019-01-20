@@ -1,13 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import credentials from './../../../credentials'
+import { google } from './../../../credentials'
+import { ncesCategories } from 'utilities/colors'
 
 import GoogleMapReact from 'google-map-react'
-import Donut from 'components/scenes/svg/donut'
+import MapPie from 'components/scenes/svg/MapPie'
 
 const Wrapper = styled.div`
   width: calc(50% - 5px);
+  margin: 0 5px 0 0;
+  display: inline-block;
   height: 100%;
   overflow: hidden;
 `
@@ -20,7 +23,7 @@ const mapOptions = {
   gestureHandling: 'greedy',
 }
 
-class PieMap extends React.Component {
+class CampusInventoryPieMap extends React.Component {
 
   constructor(props) {
     super(props)
@@ -36,23 +39,49 @@ class PieMap extends React.Component {
   }
 
   render() {
-    console.log('updating')
+
+    const { buildings } = this.props
+    const { zoom, center } = this.state
+
+    if (!buildings.length > 0) {
+      return (<div />)
+    }
+
     return (
       <Wrapper>
         <GoogleMapReact
-          bootstrapURLKeys={{key:`${credentials.google.key}`}}
+          bootstrapURLKeys={{key:`${google.key}`}}
           options={mapOptions}
-          zoom={this.state.zoom}
-          center={this.state.center}
+          zoom={zoom}
+          center={center}
           onChange={this.handleZoom.bind(this)}>
           {
-            this.props.buildings
+            buildings
               .filter(b => b.activeMulti)
               .map((b, i) => 
-                <Donut
+                <MapPie
                   key={`donut_${i}`}
-                  zoom={this.state.zoom}
-                  {...b}
+                  zoom={zoom}
+                  lat={b.lat}
+                  lng={b.lng}
+                  colors={ncesCategories}
+                  data={[
+                    +b.classroom_nsf, 
+                    +b.classlab_nsf, 
+                    +b.openlab_nsf, 
+                    +b.researchlab_nsf, 
+                    +b.officefac_nsf, 
+                    +b.studyfac_nsf,
+                    +b.specialuse_nsf, 
+                    +b.generaluse_nsf, 
+                    +b.support_nsf, 
+                    +b.healthcare_nsf, 
+                    +b.residential_nsf, 
+                    +b.circulation_nsf, 
+                    +b.bldgsvc_nsf, 
+                    +b.mechanical_nsf, 
+                    +b.unclassified_nsf
+                  ]}
                 />
               )
           }
@@ -62,4 +91,4 @@ class PieMap extends React.Component {
   }
 }
 
-export default PieMap
+export default CampusInventoryPieMap

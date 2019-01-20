@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Filters from 'components/Filters'
 
-import { toggleBuildingMulti, toggleBuildingsAll } from 'actions/activeSelections'
+import { toggleBuildingMulti, toggleBuildingsAll } from 'central/actions/activeSelections'
 
 const mapStateToProps = state => ({
   buildings: state.get('buildings'),

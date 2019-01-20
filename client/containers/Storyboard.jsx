@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Storyboard from 'components/Storyboard';
 
-import { setScene } from 'actions/activeSelections';
+import { setScene } from 'central/actions/activeSelections';
 
 const mapStateToProps = state => ({
   stories: state.get('stories'),

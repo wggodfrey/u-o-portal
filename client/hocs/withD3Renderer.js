@@ -1,13 +1,14 @@
 import React from 'react'
-import {shallowEqual} from 'recompose'
+import { shallowEqual } from 'recompose'
 
-const withD3Renderer = ({
-  resizeOn = ['width', 'height'],
-  updateOn = ['data']
-}) => WrappedComponent => {
+const withD3Renderer = ({resizeOn = ['width', 'height'], updateOn = ['data']}) => WrappedComponent => {
   return class WithD3Renderer extends React.Component {
-    setRef = wrappedComponentInstance => {
-      this.component = wrappedComponentInstance
+
+    constructor(props) {
+      super(props)
+      this.setRef = wrappedComponentInstance => {
+        this.component = wrappedComponentInstance
+      }
     }
 
     componentDidMount() {
@@ -15,11 +16,11 @@ const withD3Renderer = ({
     }
 
     componentDidUpdate(prevProps, prevState) {
-      const shouldResize = props => _.pick(props, resizeOn)
+      const shouldResize = ({width, height}) => ({width, height})
       if (!shallowEqual(shouldResize(this.props), shouldResize(prevProps))) {
         return this.component.renderD3('resize')
       }
-      const shouldUpdate = props => _.pick(props, updateOn)
+      const shouldUpdate = ({data}) => ({data})
       if (!shallowEqual(shouldUpdate(this.props), shouldUpdate(prevProps))) {
         this.component.renderD3('update')
       }

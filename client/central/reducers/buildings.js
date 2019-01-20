@@ -15,7 +15,6 @@ const buildingListReducer = (state = [], action) => {
       )
 
     case 'TOGG_BLDGS_ALL':
-      console.log(action.payload)
       return state.map(bldg =>
         action.payload === 'ON'
         ? {...bldg, activeMulti: true}

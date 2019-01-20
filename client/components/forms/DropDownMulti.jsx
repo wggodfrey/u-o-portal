@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 `
 
 const Input = styled.input`
-  width: calc(100% - 20px);
+  width: calc(100% - 30px);
   height: 30px;
   padding: 10px 10px 0px;
   border-radius: 5px;

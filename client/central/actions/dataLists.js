@@ -34,7 +34,7 @@ const getStories = () => {
               style: {
                 position: 'absolute',
                 top: '125px',
-                left: '25px',
+                left: '35px',
                 width: '400px',
               },
               components: [
@@ -52,7 +52,7 @@ const getStories = () => {
               style: {
                 position: 'absolute',
                 top: '125px',
-                right: '25px',
+                right: '35px',
                 width: '400px',
               },
               components: [
@@ -66,7 +66,7 @@ const getStories = () => {
               style: {
                 position: 'absolute',
                 top: '180px',
-                right: '25px',
+                right: '35px',
                 width: '400px',
               },
               components: [
