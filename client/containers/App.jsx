@@ -41,7 +41,7 @@ const App = () => (
   <Provider store={store}>
     <div>
       <GlobalStyle />
-      <Banner />
+      <Banner/>
       <Storyboard />
       <Dashboard />
     </div>

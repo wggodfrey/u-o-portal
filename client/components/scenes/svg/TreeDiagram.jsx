@@ -9,6 +9,7 @@ import {
     treemap as d3Treemap,
     treemapResquarify as d3TreemapResquarify,  
   } from 'd3-hierarchy'
+import { transition as d3Transition } from 'd3-transition'
 
 class TreeDiagram extends React.Component {
 
@@ -22,12 +23,10 @@ class TreeDiagram extends React.Component {
   }
 
   renderD3(mode) {
-    const { leafData, colors, width, height, connectFauxDOM, animateFauxDOM } = this.props
+    const { data, colors, width, height, connectFauxDOM, animateFauxDOM } = this.props
     
     const render = mode === 'render'
     const resize = mode === 'resize'
-    console.log('render: ', render)
-    console.log('resize: ', resize)
 
     const margin = {top:0, right:0, bottom:0, left:0}
     let leafFunc = d3Treemap()
@@ -36,12 +35,11 @@ class TreeDiagram extends React.Component {
       .round(true)
       .paddingInner(0)
 
-    let branches = d3Hierarchy(leafData)
+    let branches = d3Hierarchy(data)
       .eachBefore(d => { d.data.id = (d.parent? d.parent.data.id + '.' : '') + d.data.name })
       .sum(d => d.size)
       .sort((a, b) => b.height - a.height || b.value - a.value )
     leafFunc(branches)
-    
     
     let faux = connectFauxDOM('div', 'chart')
     let chart
@@ -61,21 +59,20 @@ class TreeDiagram extends React.Component {
     } else {
       chart = d3Select(faux).select('svg')
     }
+    
     let cells = chart.selectAll('rect').data(branches.leaves())
     cells
       .enter()
       .append('rect')
       .merge(cells)
-      .attr('transform', d => `translate(${d.x0},${d.y0})`)
-      .attr('width', d => d.x1 - d.x0)
-      .attr('height', d => d.y1 - d.y0)
       .attr('stroke', 'white')
       .attr('stroke-opacity',0.5)
       .attr('stroke-width',0.5)
       .attr('fill', d => colors.filter(e => e.label_long === d.parent.data.id.split('.')[1])[0].hexfill)
-
-
-
+      .attr('transform', d => `translate(${d.x0},${d.y0})`)
+      .attr('width', d => d.x1 - d.x0)
+      .attr('height', d => d.y1 - d.y0)
+   
     animateFauxDOM(500)
 
   }

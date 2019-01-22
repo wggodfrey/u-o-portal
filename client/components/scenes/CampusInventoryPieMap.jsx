@@ -8,7 +8,7 @@ import GoogleMapReact from 'google-map-react'
 import MapPie from 'components/scenes/svg/MapPie'
 
 const Wrapper = styled.div`
-  width: calc(50% - 5px);
+  width: calc(100% - 5px);
   margin: 0 5px 0 0;
   display: inline-block;
   height: 100%;

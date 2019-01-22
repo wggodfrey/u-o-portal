@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Panel from 'containers/panel';
 
 const Wrapper = styled.div`
+  z-index:999;
   position: relative;
   width: calc(100% - 20px);
   height: 40px;

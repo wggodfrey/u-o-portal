@@ -46,7 +46,7 @@ const ClickCatcher = styled.div`
 const DropDownWrapper = styled.div`
   position: relative;
   z-index: 1;
-  width: 100%;
+  width: calc(100% - 10px);
   max-height: 200px;
   margin: 10px 0px 0px;
   background: #ffffff;

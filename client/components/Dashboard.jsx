@@ -23,7 +23,11 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.onWindowResize.bind(this))
+    window.addEventListener('resize', this.onWindowResize)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onWindowResize)
   }
 
   render() {
@@ -41,8 +45,11 @@ class Dashboard extends React.Component {
         {(() => {
           switch (scene.title) {
             case 'Campus Overview':
-              return (<Wrapper>
-                <CampusInventoryPieMap/><MeasuredCampusInventoryTreeDiagram/></Wrapper>)
+              return (
+                <Wrapper>
+                  <div style={{width:'50%', height:'100%', display:'inline-block'}}><CampusInventoryPieMap/></div>
+                  <div style={{width:'50%', height:'100%', display:'inline-block'}}><MeasuredCampusInventoryTreeDiagram/></div>
+                </Wrapper>)
 
             default:
               return (<div>ERROR</div>)
