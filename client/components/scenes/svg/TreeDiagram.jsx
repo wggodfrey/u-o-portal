@@ -23,19 +23,18 @@ class TreeDiagram extends React.Component {
   }
 
   renderD3(mode) {
-    const { data, colors, width, height, connectFauxDOM, animateFauxDOM } = this.props
+    const { data, colors, width, height, margins, connectFauxDOM, animateFauxDOM } = this.props
     
     const render = mode === 'render'
     const resize = mode === 'resize'
 
-    const margin = {top:0, right:0, bottom:0, left:0}
-    let leafFunc = d3Treemap()
+    const leafFunc = d3Treemap()
       .tile(d3TreemapResquarify)
       .size([width, height])
       .round(true)
       .paddingInner(0)
 
-    let branches = d3Hierarchy(data)
+    const branches = d3Hierarchy(data)
       .eachBefore(d => { d.data.id = (d.parent? d.parent.data.id + '.' : '') + d.data.name })
       .sum(d => d.size)
       .sort((a, b) => b.height - a.height || b.value - a.value )
@@ -47,19 +46,19 @@ class TreeDiagram extends React.Component {
     if (render) {
       chart = d3Select(faux)
         .append('svg')
-        .attr('width', width - margin.left - margin.right)
-        .attr('height', height - margin.top - margin.bottom)
-        .attr('transform',`translate(${margin.left},${margin.top})`)
+        .attr('width', width - margins.left - margins.right)
+        .attr('height', height - margins.top - margins.bottom)
+        .attr('transform',`translate(${margins.left},${margins.top})`)
     } else if (resize) {
       chart = d3Select(faux)
         .select('svg')
-        .attr('width', width - margin.left - margin.right)
-        .attr('height', height - margin.top - margin.bottom)
-        .attr('transform',`translate(${margin.left},${margin.top})`)
+        .attr('width', width - margins.left - margins.right)
+        .attr('height', height - margins.top - margins.bottom)
+        .attr('transform',`translate(${margins.left},${margins.top})`)
     } else {
       chart = d3Select(faux).select('svg')
     }
-    
+
     let cells = chart.selectAll('rect').data(branches.leaves())
     cells
       .enter()

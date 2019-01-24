@@ -5,9 +5,11 @@ import withMeasure from 'hocs/withMeasure'
 import Filters from 'containers/Filters'
 import CampusInventoryPieMap from 'containers/scenes/CampusInventoryPieMap'
 import CampusInventoryTreeDiagram from 'containers/scenes/CampusInventoryTreeDiagram'
+import BuildingInventoryColumnChart from 'containers/scenes/BuildingInventoryColumnChart'
 
 const dimensions = ['width','height']
 const MeasuredCampusInventoryTreeDiagram = withMeasure(dimensions)(CampusInventoryTreeDiagram)
+const MeasuredBuildingInventoryColumnChart = withMeasure(dimensions)(BuildingInventoryColumnChart)
 
 const Wrapper = styled.div`
   width: calc(100% - 20px);
@@ -31,7 +33,6 @@ class Dashboard extends React.Component {
   }
 
   render() {
-
     const { stories } = this.props
 
     if (!stories.length) {
@@ -47,8 +48,20 @@ class Dashboard extends React.Component {
             case 'Campus Overview':
               return (
                 <Wrapper>
-                  <div style={{width:'50%', height:'100%', display:'inline-block'}}><CampusInventoryPieMap/></div>
-                  <div style={{width:'50%', height:'100%', display:'inline-block'}}><MeasuredCampusInventoryTreeDiagram/></div>
+                  <div style={{width:'50%', height:'100%', display:'inline-block'}}>
+                    <CampusInventoryPieMap/>
+                  </div>
+                  <div style={{width:'50%', height:'100%', display:'inline-block'}}>
+                    <MeasuredCampusInventoryTreeDiagram/>
+                  </div>
+                </Wrapper>)
+
+            case 'Building Inventory':
+              return (
+                <Wrapper>
+                  <div style={{width:'100%', height:'100%', display:'inline-block'}}>
+                    <MeasuredBuildingInventoryColumnChart/>
+                  </div>
                 </Wrapper>)
 
             default:

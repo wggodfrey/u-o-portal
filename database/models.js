@@ -27,7 +27,8 @@ models.buildings = {
                      SUM(CASE WHEN rooms.nces_cat = 'Circulation' THEN rooms.nsf ELSE 0 END) as circulation_nsf,
                      SUM(CASE WHEN rooms.nces_cat = 'Building Service' THEN rooms.nsf ELSE 0 END) as bldgsvc_nsf,
                      SUM(CASE WHEN rooms.nces_cat = 'Mechanical' THEN rooms.nsf ELSE 0 END) as mechanical_nsf,
-                     SUM(CASE WHEN rooms.nces_cat = 'Unclassified Space' THEN rooms.nsf ELSE 0 END) as unclassified_nsf
+                     SUM(CASE WHEN rooms.nces_cat = 'Unclassified Space' THEN rooms.nsf ELSE 0 END) as unclassified_nsf,
+                     SUM(rooms.nsf) as total_nsf
               FROM buildings 
               INNER JOIN rooms ON rooms.building_id = buildings.id
               GROUP BY buildings.id

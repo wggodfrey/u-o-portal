@@ -63,7 +63,7 @@ const DropDown = styled.ul`
 const Option = styled.li`
   width: calc(100% - 20px);
   margin: 1px 0px;
-  padding: 2px 10px;
+  padding: 3px 10px 1px;
   font-size: 12px;
   background: #ffffff;
   cursor: pointer;
